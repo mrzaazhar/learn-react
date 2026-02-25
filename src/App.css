@@ -14,6 +14,155 @@
   color: #e4e4e7;
 }
 
+/* Light Mode */
+.app.light {
+  background: #fafafa;
+  color: #27272a;
+}
+
+.app.light .header {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.app.light .react-logo {
+  filter: drop-shadow(0 0 10px rgba(97, 218, 251, 0.5));
+}
+
+.app.light .header h1 {
+  color: #18181b;
+}
+
+.app.light .subtitle {
+  color: #71717a;
+}
+
+.app.light .navigation {
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.app.light .nav-button {
+  color: #71717a;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.app.light .nav-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #18181b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.app.light .nav-button.active {
+  background: #61dafb;
+  color: #0a0a0f;
+  border-color: #61dafb;
+}
+
+.app.light .content-section {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.app.light .content-section h2 {
+  color: #18181b;
+}
+
+.app.light .section-description {
+  color: #71717a;
+}
+
+.app.light .intro-text {
+  color: #3f3f46;
+}
+
+.app.light .feature-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #27272a;
+}
+
+.app.light .feature-card:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(97, 218, 251, 0.4);
+}
+
+.app.light .feature-card h3 {
+  color: #18181b;
+}
+
+.app.light .feature-card p {
+  color: #71717a;
+}
+
+.app.light .code-block {
+  background: #f4f4f5;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .code-block pre {
+  color: #52525b;
+}
+
+.app.light .key-points {
+  background: rgba(97, 218, 251, 0.08);
+  border-color: rgba(97, 218, 251, 0.2);
+}
+
+.app.light .key-points li {
+  color: #3f3f46;
+}
+
+.app.light .hook-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .hook-card:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(97, 218, 251, 0.3);
+}
+
+.app.light .hook-card h3 {
+  color: #18181b;
+}
+
+.app.light .hook-card p {
+  color: #71717a;
+}
+
+.app.light .hook-card code {
+  background: #f4f4f5;
+  color: #0891b2;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .footer {
+  color: #71717a;
+  border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+.app.light .footer a {
+  background: rgba(97, 218, 251, 0.1);
+  border-color: rgba(97, 218, 251, 0.3);
+}
+
+.app.light .footer a:hover {
+  background: rgba(97, 218, 251, 0.15);
+  border-color: rgba(97, 218, 251, 0.5);
+}
+
+.app.light .theme-toggle {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #71717a;
+}
+
+.app.light .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
 /* Header */
 .header {
   background: rgba(10, 10, 15, 0.8);
@@ -21,6 +170,14 @@
   padding: 3rem 2rem;
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -310,6 +467,32 @@
 .footer a:hover {
   background: rgba(97, 218, 251, 0.15);
   border-color: rgba(97, 218, 251, 0.4);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: #a1a1aa;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fafafa;
+}
+
+.theme-label {
+  font-size: 0.8125rem;
 }
 
 /* Responsive */

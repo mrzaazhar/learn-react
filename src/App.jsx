@@ -3,6 +3,11 @@ import './App.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState('intro')
+  const [theme, setTheme] = useState('dark')
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
 
   const sections = [
     { id: 'intro', title: 'Introduction', icon: '📚' },
@@ -185,13 +190,23 @@ function Counter() {
   }
 
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <header className="header">
         <div className="logo">
           <span className="react-logo">⚛️</span>
           <h1>Learn React</h1>
         </div>
-        <p className="subtitle">Master modern web development with React</p>
+        <div className="header-actions">
+          <p className="subtitle">Master modern web development with React</p>
+          <button 
+            className="theme-toggle" 
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+            <span className="theme-label">{theme === 'dark' ? 'Light' : 'Dark'}</span>
+          </button>
+        </div>
       </header>
 
       <nav className="navigation">
