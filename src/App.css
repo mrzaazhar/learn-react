@@ -527,3 +527,687 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Progress Container */
+.progress-container {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #a1a1aa;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #61dafb, #4fa8c7);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.section-dots {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.section-dot {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.section-dot.visited {
+  background: rgba(97, 218, 251, 0.5);
+}
+
+.section-dot.active {
+  background: #61dafb;
+}
+
+.app.light .progress-label {
+  color: #71717a;
+}
+
+.app.light .progress-bar {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.app.light .section-dot {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.app.light .section-dot.visited {
+  background: rgba(97, 218, 251, 0.5);
+}
+
+/* Checkmark */
+.checkmark {
+  margin-left: 0.25rem;
+  color: #61dafb;
+  font-size: 0.75rem;
+}
+
+/* Did You Know */
+.did-you-know {
+  background: linear-gradient(135deg, rgba(97, 218, 251, 0.1) 0%, rgba(79, 168, 199, 0.1) 100%);
+  border: 1px solid rgba(97, 218, 251, 0.2);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  animation: fadeIn 0.5s ease;
+}
+
+.tip-badge {
+  display: inline-block;
+  background: rgba(97, 218, 251, 0.2);
+  color: #61dafb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.tip-content {
+  color: #d4d4d8;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.app.light .did-you-know {
+  background: linear-gradient(135deg, rgba(97, 218, 251, 0.08) 0%, rgba(79, 168, 199, 0.08) 100%);
+  border-color: rgba(97, 218, 251, 0.15);
+}
+
+.app.light .tip-content {
+  color: #3f3f46;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #61dafb;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.8125rem;
+  color: #a1a1aa;
+}
+
+.app.light .stat-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .stat-label {
+  color: #71717a;
+}
+
+/* Interactive Demo */
+.interactive-demo {
+  background: linear-gradient(135deg, rgba(97, 218, 251, 0.05) 0%, rgba(79, 168, 199, 0.05) 100%);
+  border: 1px solid rgba(97, 218, 251, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.interactive-demo h4 {
+  color: #61dafb;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.demo-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.demo-controls button {
+  padding: 0.75rem 1.5rem;
+  background: #61dafb;
+  color: #0a0a0f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.demo-controls button:hover {
+  background: #4fa8c7;
+  transform: scale(1.05);
+}
+
+.demo-controls input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fafafa;
+  font-size: 0.9375rem;
+}
+
+.demo-controls input:focus {
+  outline: 2px solid #61dafb;
+  border-color: #61dafb;
+}
+
+.demo-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #61dafb;
+  min-width: 60px;
+  text-align: center;
+}
+
+.demo-result {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.demo-result h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.demo-hint {
+  text-align: center;
+  color: #71717a;
+  font-size: 0.8125rem;
+  margin: 1rem 0 0;
+}
+
+.app.light .interactive-demo {
+  background: linear-gradient(135deg, rgba(97, 218, 251, 0.08) 0%, rgba(79, 168, 199, 0.08) 100%);
+  border-color: rgba(97, 218, 251, 0.2);
+}
+
+.app.light .demo-controls button {
+  background: #61dafb;
+  color: #0a0a0f;
+}
+
+.app.light .demo-controls input {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #18181b;
+}
+
+.app.light .demo-result {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .demo-hint {
+  color: #71717a;
+}
+
+/* Todo List */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.todo-list li.done {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.todo-list label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  cursor: pointer;
+  font-size: 0.9375rem;
+}
+
+.todo-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Color Picker */
+.color-picker {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.color-btn {
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+}
+
+.demo-result {
+  border-width: 3px;
+}
+
+/* Component Anatomy */
+.component-anatomy {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.component-anatomy h3 {
+  color: #61dafb;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+}
+
+.anatomy-visual {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.anatomy-part {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.anatomy-label {
+  background: rgba(97, 218, 251, 0.15);
+  color: #61dafb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.anatomy-part code {
+  flex: 1;
+  color: #a1a1aa;
+  font-size: 0.8125rem;
+}
+
+.app.light .component-anatomy {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.app.light .anatomy-part {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .anatomy-part code {
+  color: #52525b;
+}
+
+/* Props Flow */
+.props-flow {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.props-flow h3 {
+  color: #61dafb;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+}
+
+.flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow-node {
+  background: rgba(97, 218, 251, 0.1);
+  border: 2px solid rgba(97, 218, 251, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #61dafb;
+}
+
+.flow-arrow {
+  color: #61dafb;
+  font-size: 0.875rem;
+}
+
+/* Rules Section */
+.rules-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.rules-section h3 {
+  color: #61dafb;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+}
+
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rule-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.rule-number {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #61dafb, #4fa8c7);
+  color: #0a0a0f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  flex-shrink: 0;
+}
+
+.rule-content strong {
+  color: #fafafa;
+  font-size: 1rem;
+}
+
+.rule-content p {
+  color: #a1a1aa;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0;
+}
+
+.app.light .rules-section {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.app.light .rule-content strong {
+  color: #18181b;
+}
+
+.app.light .rule-content p {
+  color: #71717a;
+}
+
+/* Events Grid */
+.events-grid {
+  margin: 1.5rem 0;
+}
+
+.events-grid h3 {
+  color: #61dafb;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+}
+
+.events-grid .event-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.events-grid .event-card code {
+  color: #61dafb;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.events-grid .event-card span {
+  color: #a1a1aa;
+  font-size: 0.8125rem;
+}
+
+.app.light .events-grid .event-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.app.light .events-grid .event-card span {
+  color: #71717a;
+}
+
+/* Common Mistakes */
+.common-mistakes {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.common-mistakes h3 {
+  color: #ef4444;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+}
+
+.mistake-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.mistake-card h4 {
+  color: #fafafa;
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.mistake-code {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+}
+
+.mistake-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.mistake-code.wrong .mistake-label {
+  color: #ef4444;
+}
+
+.mistake-code.right .mistake-label {
+  color: #22c55e;
+}
+
+.mistake-code code {
+  color: #a1a1aa;
+  font-size: 0.8125rem;
+  font-family: 'Fira Code', monospace;
+}
+
+.mistake-tip {
+  color: #a1a1aa;
+  font-size: 0.8125rem;
+  margin: 0.75rem 0 0;
+}
+
+.app.light .common-mistakes {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.app.light .mistake-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light .mistake-card h4 {
+  color: #18181b;
+}
+
+.app.light .mistake-code {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.app.light .mistake-tip {
+  color: #71717a;
+}
+
+/* Shortcuts Panel */
+.shortcuts-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.shortcuts-panel h3 {
+  color: #61dafb;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+}
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.shortcut-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+  color: #61dafb;
+}
+
+.shortcut-item span {
+  color: #a1a1aa;
+  font-size: 0.8125rem;
+}
+
+.app.light .shortcuts-panel {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.app.light .shortcut-item {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.app.light kbd {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #0891b2;
+}
+
+.app.light .shortcut-item span {
+  color: #71717a;
+}

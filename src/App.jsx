@@ -1,12 +1,155 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState('intro')
   const [theme, setTheme] = useState('dark')
+  const [visitedSections, setVisitedSections] = useState(new Set(['intro']))
+  const [didYouKnowIndex, setDidYouKnowIndex] = useState(0)
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
+  const handleSectionChange = (sectionId) => {
+    setActiveSection(sectionId)
+    setVisitedSections(prev => new Set([...prev, sectionId]))
+  }
+
+  const didYouKnow = [
+    "React was created by Jordan Walke, a software engineer at Facebook, in 2011",
+    "The name 'React' comes from its ability to 'react' to changes in data",
+    "React Virtual DOM makes updates faster by minimizing direct DOM manipulation",
+    "You can use React for VR and 3D applications with React Three Fiber",
+    "React has over 200,000+ stars on GitHub - one of the most popular libraries!",
+    "Facebook, Instagram, Netflix, and Airbnb all use React",
+    "React Native lets you build mobile apps using the same React concepts",
+    "The first version of React was released to the public in 2013"
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDidYouKnowIndex(prev => (prev + 1) % didYouKnow.length)
+    }, 8000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const progress = (visitedSections.size / 6) * 100
+
+  // Interactive Demo Components
+  const InteractiveCounter = () => {
+    const [count, setCount] = useState(0)
+    return (
+      <div className="interactive-demo">
+        <h4>🎮 Try It: Counter Demo</h4>
+        <div className="demo-controls">
+          <button onClick={() => setCount(count - 1)}>-</button>
+          <span className="demo-value">{count}</span>
+          <button onClick={() => setCount(count + 1)}>+</button>
+        </div>
+        <p className="demo-hint">Click buttons to see state in action!</p>
+      </div>
+    )
+  }
+
+  const InteractiveProps = () => {
+    const [greeting, setGreeting] = useState('Hello')
+    const [name, setName] = useState('React')
+    return (
+      <div className="interactive-demo">
+        <h4>🎮 Try It: Props Demo</h4>
+        <div className="demo-controls">
+          <input 
+            type="text" 
+            placeholder="Greeting" 
+            value={greeting}
+            onChange={(e) => setGreeting(e.target.value)}
+          />
+          <input 
+            type="text" 
+            placeholder="Name" 
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="demo-result">
+          <h3>{greeting}, {name}! 👋</h3>
+        </div>
+        <p className="demo-hint">Type to see props changing the output!</p>
+      </div>
+    )
+  }
+
+  const InteractiveTodo = () => {
+    const [todos, setTodos] = useState([
+      { id: 1, text: 'Learn React basics', done: false },
+      { id: 2, text: 'Build my first app', done: false }
+    ])
+    const [newTodo, setNewTodo] = useState('')
+
+    const addTodo = () => {
+      if (newTodo.trim()) {
+        setTodos([...todos, { id: Date.now(), text: newTodo, done: false }])
+        setNewTodo('')
+      }
+    }
+
+    const toggleTodo = (id) => {
+      setTodos(todos.map(todo => 
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      ))
+    }
+
+    return (
+      <div className="interactive-demo">
+        <h4>🎮 Try It: Todo List Demo</h4>
+        <div className="demo-controls">
+          <input 
+            type="text" 
+            placeholder="Add a new todo..."
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && addTodo()}
+          />
+          <button onClick={addTodo}>Add</button>
+        </div>
+        <ul className="todo-list">
+          {todos.map(todo => (
+            <li key={todo.id} className={todo.done ? 'done' : ''}>
+              <label>
+                <input type="checkbox" checked={todo.done} onChange={() => toggleTodo(todo.id)} />
+                {todo.text}
+              </label>
+            </li>
+          ))}
+        </ul>
+        <p className="demo-hint">Add items and click checkboxes to complete them!</p>
+      </div>
+    )
+  }
+
+  const ColorPicker = () => {
+    const [color, setColor] = useState('#61dafb')
+    const colors = ['#61dafb', '#f093fb', '#4caf50', '#ff6b6b', '#ffd93d', '#6c5ce7']
+    return (
+      <div className="interactive-demo">
+        <h4>🎮 Try It: Color Picker</h4>
+        <div className="color-picker">
+          {colors.map(c => (
+            <button 
+              key={c}
+              className="color-btn"
+              style={{ backgroundColor: c, transform: color === c ? 'scale(1.2)' : 'scale(1)' }}
+              onClick={() => setColor(c)}
+            />
+          ))}
+        </div>
+        <div className="demo-result" style={{ color, borderColor: color }}>
+          <h3>Current Color: {color}</h3>
+        </div>
+        <p className="demo-hint">Click a color to change the text!</p>
+      </div>
+    )
   }
 
   const sections = [
@@ -18,6 +161,22 @@ function App() {
     { id: 'events', title: 'Events', icon: '🎯' },
   ]
 
+  const commonMistakes = [
+    { title: "Modifying State Directly", wrong: "state.count++", right: "setState(prev => prev + 1)", tip: "Always use the setter function, never modify state directly" },
+    { title: "Forgetting Keys in Lists", wrong: "items.map(item => <Item {...item} />)", right: "items.map(item => <Item key={item.id} {...item} />)", tip: "Keys help React identify which items changed" },
+    { title: "Using Index as Key", wrong: "items.map((item, i) => <Item key={i} ... />)", right: "items.map(item => <Item key={item.id} ... />)", tip: "Use stable IDs instead of array indices" },
+    { title: "Not Cleaning Up Effects", wrong: "useEffect(() => { setInterval(...) }, [])", right: "useEffect(() => { const id = setInterval(...); return () => clearInterval(id); }, [])", tip: "Always return cleanup function for subscriptions" }
+  ]
+
+  const shortcuts = [
+    { key: "Ctrl/Cmd + S", action: "Save file" },
+    { key: "Ctrl/Cmd + Z", action: "Undo" },
+    { key: "Ctrl/Cmd + Y", action: "Redo" },
+    { key: "Ctrl/Cmd + /", action: "Toggle comment" },
+    { key: "Alt + Up/Down", action: "Move line" },
+    { key: "Ctrl/Cmd + D", action: "Select next occurrence" }
+  ]
+
   const content = {
     intro: (
       <div className="content-section">
@@ -25,6 +184,12 @@ function App() {
         <p className="intro-text">
           React is a JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".
         </p>
+        
+        <div className="did-you-know">
+          <span className="tip-badge">💡 Did You Know?</span>
+          <p className="tip-content">{didYouKnow[didYouKnowIndex]}</p>
+        </div>
+
         <div className="feature-grid">
           <div className="feature-card">
             <span className="feature-icon">⚛️</span>
@@ -40,6 +205,21 @@ function App() {
             <span className="feature-icon">🔄</span>
             <h3>React Native</h3>
             <p>Learn once, write anywhere - build mobile apps too</p>
+          </div>
+        </div>
+
+        <div className="stats-grid">
+          <div className="stat-card">
+            <span className="stat-number">200K+</span>
+            <span className="stat-label">GitHub Stars</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-number">12+</span>
+            <span className="stat-label">Years Active</span>
+          </div>
+          <div className="stat-card">
+            <span className="stat-number">10M+</span>
+            <span className="stat-label">Weekly Downloads</span>
           </div>
         </div>
       </div>
@@ -66,6 +246,28 @@ const Welcome = () => {
           <li>Use PascalCase for component names</li>
           <li>Components can be reused throughout your app</li>
         </ul>
+
+        <div className="component-anatomy">
+          <h3>🔍 Component Anatomy</h3>
+          <div className="anatomy-visual">
+            <div className="anatomy-part import">
+              <span className="anatomy-label">Import</span>
+              <code>import React from 'react'</code>
+            </div>
+            <div className="anatomy-part function">
+              <span className="anatomy-label">Function</span>
+              <code>function MyComponent() {'{'} ... {'}'}</code>
+            </div>
+            <div className="anatomy-part return">
+              <span className="anatomy-label">Return</span>
+              <code>return <div>...</div></code>
+            </div>
+            <div className="anatomy-part export">
+              <span className="anatomy-label">Export</span>
+              <code>export default MyComponent</code>
+            </div>
+          </div>
+        </div>
       </div>
     ),
     props: (
@@ -95,6 +297,17 @@ function Welcome({ name, age }) {
           <li>Props are immutable (read-only)</li>
           <li>Use object destructuring for cleaner code</li>
         </ul>
+
+        <InteractiveProps />
+
+        <div className="props-flow">
+          <h3>📊 Props Flow</h3>
+          <div className="flow-diagram">
+            <div className="flow-node parent">Parent Component</div>
+            <div className="flow-arrow">↓ passes props ↓</div>
+            <div className="flow-node child">Child Component</div>
+          </div>
+        </div>
       </div>
     ),
     state: (
@@ -124,6 +337,9 @@ function Counter() {
           <li>Use useState hook to add state to functional components</li>
           <li>Never modify state directly - always use the setter function</li>
         </ul>
+
+        <InteractiveCounter />
+        <InteractiveTodo />
       </div>
     ),
     hooks: (
@@ -152,6 +368,26 @@ function Counter() {
             <h3>useRef</h3>
             <p>Access DOM elements or persist values</p>
             <code>const ref = useRef(initialValue)</code>
+          </div>
+        </div>
+
+        <div className="rules-section">
+          <h3>📜 Rules of Hooks</h3>
+          <div className="rules-list">
+            <div className="rule-item">
+              <span className="rule-number">1</span>
+              <div className="rule-content">
+                <strong>Only call Hooks at the top level</strong>
+                <p>Don't call Hooks inside loops, conditions, or nested functions</p>
+              </div>
+            </div>
+            <div className="rule-item">
+              <span className="rule-number">2</span>
+              <div className="rule-content">
+                <strong>Only call Hooks from React functions</strong>
+                <p>Call them from React functional components or custom Hooks</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -185,6 +421,36 @@ function Counter() {
           <li>You pass a function, not a string</li>
           <li>Event handlers receive synthetic event objects</li>
         </ul>
+
+        <ColorPicker />
+
+        <div className="events-grid">
+          <h3>🎪 Common Events</h3>
+          <div className="event-card">
+            <code>onClick</code>
+            <span>Click event</span>
+          </div>
+          <div className="event-card">
+            <code>onChange</code>
+            <span>Input change</span>
+          </div>
+          <div className="event-card">
+            <code>onSubmit</code>
+            <span>Form submit</span>
+          </div>
+          <div className="event-card">
+            <code>onKeyDown</code>
+            <span>Key press</span>
+          </div>
+          <div className="event-card">
+            <code>onMouseOver</code>
+            <span>Hover event</span>
+          </div>
+          <div className="event-card">
+            <code>onFocus</code>
+            <span>Element focus</span>
+          </div>
+        </div>
       </div>
     ),
   }
@@ -207,6 +473,25 @@ function Counter() {
             <span className="theme-label">{theme === 'dark' ? 'Light' : 'Dark'}</span>
           </button>
         </div>
+        
+        <div className="progress-container">
+          <div className="progress-label">
+            <span>📊 Progress</span>
+            <span>{Math.round(progress)}%</span>
+          </div>
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: `${progress}%` }} />
+          </div>
+          <div className="section-dots">
+            {sections.map(section => (
+              <div 
+                key={section.id}
+                className={`section-dot ${visitedSections.has(section.id) ? 'visited' : ''} ${activeSection === section.id ? 'active' : ''}`}
+                title={section.title}
+              />
+            ))}
+          </div>
+        </div>
       </header>
 
       <nav className="navigation">
@@ -214,16 +499,47 @@ function Counter() {
           <button
             key={section.id}
             className={`nav-button ${activeSection === section.id ? 'active' : ''}`}
-            onClick={() => setActiveSection(section.id)}
+            onClick={() => handleSectionChange(section.id)}
           >
             <span className="nav-icon">{section.icon}</span>
             {section.title}
+            {visitedSections.has(section.id) && <span className="checkmark">✓</span>}
           </button>
         ))}
       </nav>
 
       <main className="main-content">
         {content[activeSection]}
+        
+        <div className="common-mistakes">
+          <h3>⚠️ Common Mistakes to Avoid</h3>
+          {commonMistakes.slice(0, 2).map((mistake, i) => (
+            <div key={i} className="mistake-card">
+              <h4>{mistake.title}</h4>
+              <div className="mistake-code wrong">
+                <span className="mistake-label">❌ Wrong:</span>
+                <code>{mistake.wrong}</code>
+              </div>
+              <div className="mistake-code right">
+                <span className="mistake-label">✅ Right:</span>
+                <code>{mistake.right}</code>
+              </div>
+              <p className="mistake-tip">💡 {mistake.tip}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="shortcuts-panel">
+          <h3>⌨️ Keyboard Shortcuts</h3>
+          <div className="shortcuts-grid">
+            {shortcuts.map((shortcut, i) => (
+              <div key={i} className="shortcut-item">
+                <kbd>{shortcut.key}</kbd>
+                <span>{shortcut.action}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
 
       <footer className="footer">
