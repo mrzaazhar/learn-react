@@ -13,6 +13,11 @@ phases:
       - echo Building the React app...
       - npm run build
 
+  post_build:
+    commands:
+      - echo Invalidating CloudFront cache...
+      - aws cloudfront create-invalidation --distribution-id E2245SNPB6JX3Z --paths "/*"
+
 artifacts:
   files:
     - '**/*'
