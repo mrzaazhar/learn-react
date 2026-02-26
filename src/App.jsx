@@ -6,9 +6,14 @@ function App() {
   const [theme, setTheme] = useState('dark')
   const [visitedSections, setVisitedSections] = useState(new Set(['intro']))
   const [didYouKnowIndex, setDidYouKnowIndex] = useState(0)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
   }
 
   const handleSectionChange = (sectionId) => {
@@ -458,9 +463,22 @@ function Counter() {
   return (
     <div className={`app ${theme}`}>
       <header className="header">
-        <div className="logo">
-          <span className="react-logo">⚛️</span>
-          <h1>Learn React</h1>
+        <div className="header-left">
+          <button 
+            className="sidebar-toggle"
+            onClick={toggleSidebar}
+            aria-label="Toggle sidebar"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div className="logo">
+            <span className="react-logo">⚛️</span>
+            <h1>Learn React</h1>
+          </div>
         </div>
         <div className="header-actions">
           <p className="subtitle">Master modern web development with React</p>
@@ -473,81 +491,79 @@ function Counter() {
             <span className="theme-label">{theme === 'dark' ? 'Light' : 'Dark'}</span>
           </button>
         </div>
-        
-        <div className="progress-container">
-          <div className="progress-label">
-            <span>📊 Progress</span>
-            <span>{Math.round(progress)}%</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress-fill" style={{ width: `${progress}%` }} />
-          </div>
-          <div className="section-dots">
-            {sections.map(section => (
-              <div 
-                key={section.id}
-                className={`section-dot ${visitedSections.has(section.id) ? 'visited' : ''} ${activeSection === section.id ? 'active' : ''}`}
-                title={section.title}
-              />
-            ))}
-          </div>
-        </div>
       </header>
 
-      <nav className="navigation">
-        {sections.map((section) => (
-          <button
-            key={section.id}
-            className={`nav-button ${activeSection === section.id ? 'active' : ''}`}
-            onClick={() => handleSectionChange(section.id)}
-          >
-            <span className="nav-icon">{section.icon}</span>
-            {section.title}
-            {visitedSections.has(section.id) && <span className="checkmark">✓</span>}
-          </button>
-        ))}
-      </nav>
-
-      <main className="main-content">
-        {content[activeSection]}
-        
-        <div className="common-mistakes">
-          <h3>⚠️ Common Mistakes to Avoid</h3>
-          {commonMistakes.slice(0, 2).map((mistake, i) => (
-            <div key={i} className="mistake-card">
-              <h4>{mistake.title}</h4>
-              <div className="mistake-code wrong">
-                <span className="mistake-label">❌ Wrong:</span>
-                <code>{mistake.wrong}</code>
-              </div>
-              <div className="mistake-code right">
-                <span className="mistake-label">✅ Right:</span>
-                <code>{mistake.right}</code>
-              </div>
-              <p className="mistake-tip">💡 {mistake.tip}</p>
+      <div className="app-container">
+        <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+          <div className="sidebar-header">
+            <h3>📖 Navigation</h3>
+            <div className="progress-indicator">
+              <span>Progress: {Math.round(progress)}%</span>
             </div>
-          ))}
-        </div>
+          </div>
+          <nav className="sidebar-nav">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                className={`sidebar-item ${activeSection === section.id ? 'active' : ''}`}
+                onClick={() => handleSectionChange(section.id)}
+              >
+                <span className="sidebar-icon">{section.icon}</span>
+                <span className="sidebar-title">{section.title}</span>
+                {visitedSections.has(section.id) && (
+                  <span className="sidebar-checkmark">✓</span>
+                )}
+              </button>
+            ))}
+          </nav>
+          <div className="sidebar-footer">
+            <p className="sidebar-tip">
+              💡 Tip: Click sections to navigate
+            </p>
+          </div>
+        </aside>
 
-        <div className="shortcuts-panel">
-          <h3>⌨️ Keyboard Shortcuts</h3>
-          <div className="shortcuts-grid">
-            {shortcuts.map((shortcut, i) => (
-              <div key={i} className="shortcut-item">
-                <kbd>{shortcut.key}</kbd>
-                <span>{shortcut.action}</span>
+        <main className="main-content">
+          {content[activeSection]}
+          
+          <div className="common-mistakes">
+            <h3>⚠️ Common Mistakes to Avoid</h3>
+            {commonMistakes.slice(0, 2).map((mistake, i) => (
+              <div key={i} className="mistake-card">
+                <h4>{mistake.title}</h4>
+                <div className="mistake-code wrong">
+                  <span className="mistake-label">❌ Wrong:</span>
+                  <code>{mistake.wrong}</code>
+                </div>
+                <div className="mistake-code right">
+                  <span className="mistake-label">✅ Right:</span>
+                  <code>{mistake.right}</code>
+                </div>
+                <p className="mistake-tip">💡 {mistake.tip}</p>
               </div>
             ))}
           </div>
-        </div>
-      </main>
 
-      <footer className="footer">
-        <p>Start your React journey today! 🚀</p>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          Visit Official React Docs →
-        </a>
-      </footer>
+          <div className="shortcuts-panel">
+            <h3>⌨️ Keyboard Shortcuts</h3>
+            <div className="shortcuts-grid">
+              {shortcuts.map((shortcut, i) => (
+                <div key={i} className="shortcut-item">
+                  <kbd>{shortcut.key}</kbd>
+                  <span>{shortcut.action}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <footer className="footer">
+            <p>Start your React journey today! 🚀</p>
+            <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
+              Visit Official React Docs →
+            </a>
+          </footer>
+        </main>
+      </div>
     </div>
   )
 }
