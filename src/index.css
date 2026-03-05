@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -13,15 +19,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #0a0a0f;
   color: #e4e4e7;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
 }
 
 ul {
@@ -30,4 +45,35 @@ ul {
 
 code {
   font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  html {
+    font-size: 12px;
+  }
 }

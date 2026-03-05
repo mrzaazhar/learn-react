@@ -656,20 +656,55 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .header-left {
+    gap: 0.5rem;
+  }
+
+  .logo {
+    gap: 0.5rem;
+  }
+
+  .react-logo {
+    font-size: 1.75rem;
   }
 
   .header h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .subtitle {
     display: none;
   }
 
+  .header-actions {
+    gap: 1rem;
+  }
+
+  .theme-toggle {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .theme-label {
+    display: none;
+  }
+
   .sidebar {
     width: 100%;
     max-width: 300px;
+    top: 64px;
+    height: calc(100vh - 64px);
+  }
+
+  .sidebar-header {
+    padding: 1rem;
+  }
+
+  .sidebar-header h3 {
+    font-size: 0.875rem;
   }
 
   .main-content {
@@ -677,16 +712,500 @@
   }
 
   .content-section {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .content-section h2 {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
+  }
+
+  .section-description {
+    font-size: 0.9375rem;
+  }
+
+  .intro-text {
+    font-size: 0.9375rem;
   }
 
   .feature-grid,
-  .hooks-grid {
+  .hooks-grid,
+  .stats-grid,
+  .shortcuts-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .feature-card,
+  .hook-card,
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-card h3,
+  .hook-card h3 {
+    font-size: 1rem;
+  }
+
+  .feature-card p,
+  .hook-card p {
+    font-size: 0.8125rem;
+  }
+
+  .code-block {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    font-size: 0.75rem;
+  }
+
+  .key-points {
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .interactive-demo {
+    padding: 1.25rem;
+  }
+
+  .interactive-demo h4 {
+    font-size: 1rem;
+  }
+
+  .demo-controls {
+    gap: 0.5rem;
+  }
+
+  .demo-controls button {
+    padding: 0.625rem 1rem;
+    font-size: 1.125rem;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .demo-controls input {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+
+  .demo-value {
+    font-size: 1.5rem;
+    min-width: 48px;
+  }
+
+  .demo-result {
+    padding: 1rem;
+  }
+
+  .demo-result h3 {
+    font-size: 1.25rem;
+  }
+
+  .demo-hint {
+    font-size: 0.75rem;
+  }
+
+  .todo-list {
+    max-height: 150px;
+  }
+
+  .todo-list li {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .todo-list input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+  }
+
+  .color-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .component-anatomy,
+  .props-flow,
+  .rules-section {
+    padding: 1.25rem;
+  }
+
+  .component-anatomy h3,
+  .props-flow h3,
+  .rules-section h3 {
+    font-size: 1rem;
+  }
+
+  .anatomy-part {
+    padding: 0.625rem 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .anatomy-label {
+    font-size: 0.6875rem;
+  }
+
+  .anatomy-part code {
+    font-size: 0.75rem;
+  }
+
+  .flow-node {
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .rule-item {
+    gap: 0.75rem;
+  }
+
+  .rule-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8125rem;
+  }
+
+  .rule-content strong {
+    font-size: 0.9375rem;
+  }
+
+  .rule-content p {
+    font-size: 0.8125rem;
+  }
+
+  .events-grid .event-card {
+    padding: 0.625rem 0.75rem;
+  }
+
+  .events-grid .event-card code {
+    font-size: 0.875rem;
+  }
+
+  .events-grid .event-card span {
+    font-size: 0.75rem;
+  }
+
+  .common-mistakes {
+    padding: 1.25rem;
+  }
+
+  .common-mistakes h3 {
+    font-size: 1rem;
+  }
+
+  .mistake-card {
+    padding: 1rem;
+  }
+
+  .mistake-card h4 {
+    font-size: 0.9375rem;
+  }
+
+  .mistake-code {
+    padding: 0.625rem 0.75rem;
+  }
+
+  .mistake-code code {
+    font-size: 0.75rem;
+  }
+
+  .mistake-tip {
+    font-size: 0.75rem;
+  }
+
+  .shortcuts-panel {
+    padding: 1.25rem;
+  }
+
+  .shortcuts-panel h3 {
+    font-size: 1rem;
+  }
+
+  .shortcuts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shortcut-item {
+    padding: 0.625rem 0.75rem;
+  }
+
+  kbd {
+    font-size: 0.6875rem;
+    padding: 0.1875rem 0.375rem;
+  }
+
+  .shortcut-item span {
+    font-size: 0.75rem;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer p {
+    font-size: 0.875rem;
+  }
+
+  .footer a {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.875rem;
+  }
+
+  .did-you-know {
+    padding: 1rem;
+  }
+
+  .tip-badge {
+    font-size: 0.75rem;
+    padding: 0.1875rem 0.625rem;
+  }
+
+  .tip-content {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.625rem 0.75rem;
+  }
+
+  .header-left {
+    gap: 0.375rem;
+  }
+
+  .logo {
+    gap: 0.375rem;
+  }
+
+  .react-logo {
+    font-size: 1.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.125rem;
+  }
+
+  .sidebar-toggle {
+    padding: 0.375rem;
+  }
+
+  .sidebar-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .theme-toggle {
+    padding: 0.375rem 0.625rem;
+  }
+
+  .theme-toggle svg {
+    font-size: 1.125rem;
+  }
+
+  .sidebar {
+    top: 56px;
+    height: calc(100vh - 56px);
+  }
+
+  .sidebar-header {
+    padding: 0.875rem;
+  }
+
+  .sidebar-item {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .sidebar-icon {
+    font-size: 1rem;
+  }
+
+  .sidebar-title {
+    font-size: 0.875rem;
+  }
+
+  .sidebar-checkmark {
+    font-size: 0.8125rem;
+  }
+
+  .main-content {
+    padding: 0.75rem;
+  }
+
+  .content-section {
+    padding: 1rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.125rem;
+  }
+
+  .section-description {
+    font-size: 0.875rem;
+  }
+
+  .intro-text {
+    font-size: 0.875rem;
+  }
+
+  .feature-grid,
+  .hooks-grid,
+  .stats-grid,
+  .shortcuts-grid {
+    gap: 0.625rem;
+  }
+
+  .feature-card,
+  .hook-card,
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 1.75rem;
+  }
+
+  .feature-card h3,
+  .hook-card h3 {
+    font-size: 0.9375rem;
+  }
+
+  .feature-card p,
+  .hook-card p {
+    font-size: 0.8125rem;
+  }
+
+  .code-block {
+    padding: 0.875rem;
+    margin: 0.875rem 0;
+  }
+
+  .code-block pre {
+    font-size: 0.6875rem;
+    line-height: 1.5;
+  }
+
+  .key-points {
+    padding: 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .key-points li {
+    padding-left: 1rem;
+  }
+
+  .interactive-demo {
+    padding: 1rem;
+  }
+
+  .interactive-demo h4 {
+    font-size: 0.9375rem;
+  }
+
+  .demo-controls {
+    gap: 0.375rem;
+  }
+
+  .demo-controls button {
+    padding: 0.5rem 0.875rem;
+    font-size: 1rem;
+  }
+
+  .demo-controls input {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .demo-value {
+    font-size: 1.25rem;
+  }
+
+  .demo-result {
+    padding: 0.875rem;
+  }
+
+  .demo-result h3 {
+    font-size: 1.125rem;
+  }
+
+  .component-anatomy,
+  .props-flow,
+  .rules-section {
+    padding: 1rem;
+  }
+
+  .component-anatomy h3,
+  .props-flow h3,
+  .rules-section h3 {
+    font-size: 0.9375rem;
+  }
+
+  .mistake-card {
+    padding: 0.875rem;
+  }
+
+  .mistake-card h4 {
+    font-size: 0.875rem;
+  }
+
+  .mistake-code {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .mistake-code code {
+    font-size: 0.6875rem;
+  }
+
+  .shortcuts-panel {
+    padding: 1rem;
+  }
+
+  .shortcuts-panel h3 {
+    font-size: 0.9375rem;
+  }
+
+  .footer {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .did-you-know {
+    padding: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .header h1 {
+    font-size: 1rem;
+  }
+
+  .react-logo {
+    font-size: 1.375rem;
+  }
+
+  .content-section h2 {
+    font-size: 1rem;
+  }
+
+  .feature-card,
+  .hook-card,
+  .stat-card {
+    padding: 0.875rem;
+  }
+
+  .demo-controls button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
   }
 }
 
